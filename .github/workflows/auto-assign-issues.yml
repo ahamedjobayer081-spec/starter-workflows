@@ -8,8 +8,13 @@ jobs:
     auto-assign:
         runs-on: ubuntu-latest
         steps:
+            - name: Harden the runner (Audit all outbound calls)
+              uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+              with:
+                egress-policy: audit
+
             - name: 'Auto-assign issue'
-              uses: pozil/auto-assign-issue@v1.11.0
+              uses: pozil/auto-assign-issue@74b9f64cc1a08f99358061073e243a4c3d7dd5c4 # v1.11.0
               with:
                   assignees: phantsure,tiwarishub,anuragc617,vsvipul,bishal-pdmsft
                   numOfAssignee: 1
